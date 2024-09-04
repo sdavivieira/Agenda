@@ -1,0 +1,47 @@
+<%- include('./includes/head') %>
+<%- include('./includes/nav') %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-2"></div>
+
+    <div class="col-lg-8 my-3">
+      <h1 class="display-4 text-center mb-4">Membros</h1>
+      <p class="text-center lead mb-4">Membros estão abaixo</p>
+
+      <%- include('./includes/messages') %>
+
+      <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Descrição</th>
+              <th>Telefone</th>
+              <th>Email</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% membros.forEach(membro => { %>
+              <tr>
+                <td><%= membro.nome %></td>
+                <td><%= membro.descricao %></td>
+                <td><%= membro.telefone %></td>
+                <td><%= membro.email %></td>
+                <td>
+                  <a class="btn btn-primary btn-sm" href="/membros/index/<%= membro._id %>">Editar</a>
+                  <a class="btn btn-danger btn-sm" href="/membros/delete/<%= membro._id %>">Excluir</a>
+                </td>
+              </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="col-lg-2"></div>
+  </div>
+</div>
+
+<%- include('./includes/footer') %>

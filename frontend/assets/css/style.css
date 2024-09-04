@@ -1,0 +1,27 @@
+/* Garante que a navbar ocupe 100% da largura disponível */
+.navbar {
+  width: 100%;
+}
+
+/* Container da navbar para garantir que o conteúdo seja distribuído corretamente */
+.navbar .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* Centraliza o nome da marca */
+.navbar-brand {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* Alinha os itens de navegação à esquerda */
+.navbar-nav {
+  position: absolute;
+  left: 0;
+}

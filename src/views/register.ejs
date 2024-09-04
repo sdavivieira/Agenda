@@ -1,0 +1,60 @@
+
+<%- include('./includes/head') %>
+<%- include('./includes/nav') %>
+
+    <div class="container">
+<div class="row">
+  <div class="col-lg-2"></div>
+
+  <div class="col-lg-8 my-3">
+    <h1 class="display-1 text-center">Mensalidade</h1>
+    <p class="text-center lead">Crie ou edite as mensalidades</p>
+
+    <%- include('./includes/messages') %> 
+
+    <% if(mensalidade._id) { %>
+    <form action="/mensalidade/edit/<%= mensalidade._id %>" method="POST">
+      <% } else { %>
+        <form action="/mensalidade/register" method="POST">
+        <% } %>
+      <input type="hidden" name="_csrf" value=<%= csrfToken %>>
+      <div class="form-group">
+        <label>Nome</label>
+        <select class="form-control" name="nome" required>
+          <% membros.forEach(function(membro) { %>
+            <option value="<%= membro.nome %>" <%= mensalidade.nome === membro.nome ? 'selected' : '' %>><%= membro.nome %></option>
+          <% }); %>
+        </select>
+      </div>      
+      <div class="form-group">
+        <label>Pagamento</label>
+        <select class="form-control" name="pagamento" required>
+          <option value="Pago" <%= mensalidade.pagamento === 'Pago' ? 'selected' : '' %>>Pago</option>
+          <option value="Não Pago" <%= mensalidade.pagamento === 'Não Pago' ? 'selected' : '' %>>Não Pago</option>
+        </select>
+      </div>      
+      <div class="form-group">
+        <label>Mês</label>
+        <select class="form-control" name="mes" required>
+          <option value="Janeiro" <%= mensalidade.mes === 'Janeiro' ? 'selected' : '' %>>Janeiro</option>
+          <option value="Fevereiro" <%= mensalidade.mes === 'Fevereiro' ? 'selected' : '' %>>Fevereiro</option>
+          <option value="Marco" <%= mensalidade.mes === 'Marco' ? 'selected' : '' %>>Março</option>
+          <option value="Abril" <%= mensalidade.mes === 'Abril' ? 'selected' : '' %>>Abril</option>
+          <option value="Maio" <%= mensalidade.mes === 'Maio' ? 'selected' : '' %>>Maio</option>
+          <option value="Junho" <%= mensalidade.mes === 'Junho' ? 'selected' : '' %>>Junho</option>
+          <option value="Julho" <%= mensalidade.mes === 'Julho' ? 'selected' : '' %>>Julho</option>
+          <option value="Agosto" <%= mensalidade.mes === 'Agosto' ? 'selected' : '' %>>Agosto</option>
+          <option value="Setembro" <%= mensalidade.mes === 'Setembro' ? 'selected' : '' %>>Setembro</option>
+          <option value="Outubro" <%= mensalidade.mes === 'Outubro' ? 'selected' : '' %>>Outubro</option>
+          <option value="Novembro" <%= mensalidade.mes === 'Novembro' ? 'selected' : '' %>>Novembro</option>
+          <option value="Dezembro" <%= mensalidade.mes === 'Dezembro' ? 'selected' : '' %>>Dezembro</option>
+        </select>
+      </div>      
+      <div class="form-group">
+        <label>Ano</label>
+        <input  value = "<%= mensalidade.ano %>" type="string" class="form-control" name="ano" required>
+      </div>
+      <button type="submit" class="btn btn-primary btn-lg btn-block">Salvar</button>
+    </form>
+  </div>
+    <%- include('./includes/footer') %>

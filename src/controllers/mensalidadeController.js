@@ -18,7 +18,7 @@ exports.index = async function(req, res) {
 
 exports.registerIndex = async function(req, res) {
   const membros = await Membros.buscaPorNomeMembros(); 
-  res.render('Register', { membros, mensalidade: {} }); 
+  res.render('register', { membros, mensalidade: {} }); 
 };
 
 exports.register = async function (req, res) {

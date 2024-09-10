@@ -4,7 +4,6 @@ const validator = require('validator')
 const MembrosSchema = new mongoose.Schema({
   nome: { type: String, required: true },
   descricao: {type: String, required: false, default: ''},
-  email: {type: String,  required: false, default: ''},
   telefone: {type: String,  required: false, default: ''},
   criadoEm: {type: Date, default: Date.now}
 });
@@ -31,10 +30,6 @@ Membros.prototype.register = async function(){
 // Validação
 Membros.prototype.valida = function() {
   this.cleanUp();
-
-  if (this.body.email && !validator.isEmail(this.body.email)) {
-    this.errors.push('Email inválido');
-  }
   if (!this.body.nome) {
     this.errors.push('Nome é um campo Obrigatório');
   }
@@ -50,7 +45,6 @@ Membros.prototype.cleanUp = function() {
   this.body = {
     nome: this.body.nome,
     descricao: this.body.descricao,
-    email: this.body.email,
     telefone: this.body.telefone,
   };
 };

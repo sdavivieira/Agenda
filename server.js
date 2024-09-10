@@ -47,6 +47,7 @@ app.use(middlewareGlobal);
 app.use(checkCsrfError);
 app.use(csrfMiddleware);
 app.use(routes);
+app.use('/src', express.static(path.resolve(__dirname, 'src')));
 
 // Iniciar o servidor diretamente
 app.listen(3000, () => {
